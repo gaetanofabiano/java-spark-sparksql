@@ -29,7 +29,7 @@ public class SparkSQLDataset {
        
         
         Dataset<Row> distinct = realEstate.select(realEstate.col("Location")).distinct();
-        distinct.foreach(f->System.out.println(f));
+        //distinct.foreach(f->System.out.println(f));
         distinct.printSchema();
         
         
@@ -38,7 +38,7 @@ public class SparkSQLDataset {
         
         
         //Dataset<Row> max = realEstate.groupBy(realEstate.col("Location")).max("Price");
-        max.foreach(m->System.out.println(m));
+       
         max.printSchema();
         
         distinct.show(10);
