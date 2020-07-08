@@ -11,8 +11,9 @@ import org.apache.spark.sql.SparkSession;
 * Java-Spark-Training-Course
 *
 * @author  Gaetano Fabiano
-* @version 1.0.0
+* @version 1.1.0
 * @since   2019-07-19 
+* @updated 2020-07-01 
 */
 
 public class SparkSQLDataset {
@@ -41,7 +42,7 @@ public class SparkSQLDataset {
        
         max.printSchema();
         
-        distinct.show(10);
+        distinct.show();
         
        
         
