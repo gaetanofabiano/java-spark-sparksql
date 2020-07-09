@@ -30,12 +30,15 @@ public class RddDatasetConversion {
 
         JavaRDD<String> lines = sc.textFile("in/2016-stack-overflow-survey-responses.csv");
 
+        //Mappo ongni line in un Pojo
         JavaRDD<ResponsePOJO> responseRDD = lines
                 .filter(line -> !line.split(COMMA_DELIMITER, -1)[2].equals("country"))
                 .map(line -> {
                     String[] splits = line.split(COMMA_DELIMITER, -1);
                     return new ResponsePOJO(splits[2], toInt(splits[6]), splits[9], toInt(splits[14]));
                 });
+        
+        
         Dataset<ResponsePOJO> responseDataset = session.createDataset(responseRDD.rdd(), Encoders.bean(ResponsePOJO.class));
 
         System.out.println("=== Print out schema ===");

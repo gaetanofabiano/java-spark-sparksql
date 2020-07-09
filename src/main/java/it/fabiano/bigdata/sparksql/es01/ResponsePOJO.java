@@ -10,6 +10,7 @@ import java.io.Serializable;
 * @updated 2020-07-01 
 */
 public class ResponsePOJO implements Serializable {
+	
     private String country;
     private Integer ageMidPoint;
     private String occupation;
@@ -56,13 +57,42 @@ public class ResponsePOJO implements Serializable {
         this.salaryMidPoint = salaryMidPoint;
     }
 
-    @Override
-    public String toString() {
-        return "Response{" +
-                "country='" + country + '\'' +
-                ", ageMidPoint=" + ageMidPoint +
-                ", occupation='" + occupation + '\'' +
-                ", salaryMidPoint=" + salaryMidPoint +
-                '}';
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ageMidPoint == null) ? 0 : ageMidPoint.hashCode());
+		result = prime * result + ((country == null) ? 0 : country.hashCode());
+		result = prime * result + ((occupation == null) ? 0 : occupation.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ResponsePOJO other = (ResponsePOJO) obj;
+		if (ageMidPoint == null) {
+			if (other.ageMidPoint != null)
+				return false;
+		} else if (!ageMidPoint.equals(other.ageMidPoint))
+			return false;
+		if (country == null) {
+			if (other.country != null)
+				return false;
+		} else if (!country.equals(other.country))
+			return false;
+		if (occupation == null) {
+			if (other.occupation != null)
+				return false;
+		} else if (!occupation.equals(other.occupation))
+			return false;
+		return true;
+	}
+
+    
 }

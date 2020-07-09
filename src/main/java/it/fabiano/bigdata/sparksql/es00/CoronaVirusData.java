@@ -57,10 +57,11 @@ public class CoronaVirusData {
         
         coronaItalia.show(100);
         
-       
+      
         
         Dataset<Row> maxPerProvincia = 
-        		coronaItalia.withColumn("totale_casi", coronaItalia.col("totale_casi").cast("long"))
+        		coronaItalia.withColumn("totale_casi", 
+        				coronaItalia.col("totale_casi").cast("long"))
         		.groupBy(coronaItalia.col("denominazione_provincia"))
         		.max("totale_casi");
         
